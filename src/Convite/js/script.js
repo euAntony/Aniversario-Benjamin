@@ -27,6 +27,24 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
+// Lógica dos Menus Expansíveis
+function toggleExpand(id) {
+    const content = document.getElementById(id);
+    const arrow = document.getElementById(id + '-arrow');
+
+    if (content.classList.contains('open')) {
+        content.classList.remove('open');
+        arrow.innerText = '▼';
+    } else {
+        // Fecha outros
+        document.querySelectorAll('.expand-content').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.expand-header span:last-child').forEach(el => el.innerText = '▼');
+
+        content.classList.add('open');
+        arrow.innerText = '▲';
+    }
+}
+
 // Efeito de Confetes Interativo
 function throwConfetti() {
     const colors = ['#1B4980', '#4A90E2', '#93C5FD', '#FBBF24', '#F59E0B', '#ffffff'];
