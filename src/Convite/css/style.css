@@ -1,0 +1,519 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(-45deg, #bbe1fa, #e0f2fe, #f0f7ff, #ffffff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #2c3e50;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Nuvens dinâmicas no fundo */
+
+.cloud-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.animated-cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 100px;
+  filter: drop-shadow(0 8px 15px rgba(100, 150, 200, 0.12));
+  animation: floatCloud linear infinite;
+}
+
+.animated-cloud::before,
+.animated-cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 150px;
+  height: 50px;
+  top: 10%;
+  left: -180px;
+  animation-duration: 28s;
+}
+
+.cloud-1::before {
+  width: 65px;
+  height: 65px;
+  top: -30px;
+  left: 25px;
+}
+
+.cloud-1::after {
+  width: 50px;
+  height: 50px;
+  top: -20px;
+  right: 25px;
+}
+
+.cloud-2 {
+  width: 200px;
+  height: 60px;
+  top: 45%;
+  left: -220px;
+  animation-duration: 38s;
+  animation-delay: 5s;
+  opacity: 0.85;
+}
+
+.cloud-2::before {
+  width: 80px;
+  height: 80px;
+  top: -35px;
+  left: 35px;
+}
+
+.cloud-2::after {
+  width: 60px;
+  height: 60px;
+  top: -22px;
+  right: 35px;
+}
+
+.cloud-3 {
+  width: 130px;
+  height: 45px;
+  top: 75%;
+  left: -150px;
+  animation-duration: 22s;
+  animation-delay: 12s;
+}
+
+.cloud-3::before {
+  width: 55px;
+  height: 55px;
+  top: -25px;
+  left: 20px;
+}
+
+.cloud-3::after {
+  width: 40px;
+  height: 40px;
+  top: -15px;
+  right: 20px;
+}
+
+@keyframes floatCloud {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(100vw + 300px));
+  }
+}
+
+/* Estrelas Brilhantes Flutuantes */
+
+.sparkle-star {
+  position: absolute;
+  color: #FBBF24;
+  font-size: 14px;
+  animation: pulseStar 3s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+@keyframes pulseStar {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.3) rotate(20deg);
+    opacity: 0.9;
+  }
+}
+
+/* Card do Convite */
+
+.card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  max-width: 480px;
+  width: 100%;
+  border-radius: 32px;
+  padding: 35px 25px;
+  box-shadow: 0 20px 45px rgba(27, 73, 128, 0.15);
+  border: 3px solid #ffffff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge Superior */
+.header-badge {
+  background: linear-gradient(135deg, #1B4980, #3B82F6);
+  color: #ffffff;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 22px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(27, 73, 128, 0.2);
+}
+
+/* Versículo */
+
+.bible-verse {
+  font-size: 13.5px;
+  color: #5a738e;
+  font-style: italic;
+  background: #f0f7ff;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border-left: 4px solid #4A90E2;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.bible-verse span {
+  display: block;
+  font-weight: bold;
+  font-style: normal;
+  margin-top: 4px;
+  color: #1B4980;
+  font-size: 12px;
+}
+
+/* Nome do Aniversariante */
+
+.name-container {
+  margin: 15px 0 20px;
+}
+
+.name {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 44px;
+  color: #1B4980;
+  text-shadow: 2px 2px 0px #d2ebfc;
+  line-height: 1.1;
+}
+
+.age-tag {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 18px;
+  color: #D97706;
+  background: #FEF3C7;
+  display: inline-block;
+  padding: 5px 18px;
+  border-radius: 20px;
+  margin-top: 8px;
+  border: 1px solid #FCD34D;
+}
+
+/* Ilustração Central */
+
+.illustration-box {
+  background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 100%);
+  border-radius: 22px;
+  padding: 22px;
+  margin: 20px 0;
+  border: 2px dashed #93c5fd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.illustration-svg {
+  width: 85px;
+  height: 85px;
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.theme-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 25px;
+  color: #1B4980;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Detalhes */
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 22px 0;
+  text-align: left;
+}
+
+.detail-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 14px 18px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.detail-icon {
+  font-size: 24px;
+  background: #e0f2fe;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-text h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.detail-text p {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Contagem Regressiva */
+
+.countdown-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.timer-block {
+  background: #1B4980;
+  color: white;
+  padding: 10px 5px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(27, 73, 128, 0.15);
+}
+
+.timer-number {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 20px;
+  display: block;
+}
+
+.timer-label {
+  font-size: 10px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+/* Seções Expansíveis (Sugestão de Presente & Info) */
+
+.expandable-section {
+  margin-bottom: 15px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.expand-header {
+  width: 100%;
+  padding: 14px 18px;
+  background: #f0f7ff;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  color: #1B4980;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.expand-header:hover {
+  background: #e0f2fe;
+}
+
+.expand-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease;
+  padding: 0 18px;
+  font-size: 13.5px;
+  color: #475569;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.expand-content.open {
+  padding: 15px 18px;
+  max-height: 200px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Botões de Ação */
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background: #20ba5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+}
+
+.btn-location {
+  background: #1B4980;
+  color: white;
+}
+
+.btn-location:hover {
+  background: #153863;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(27, 73, 128, 0.3);
+}
+
+.btn-confetti {
+  background: #F59E0B;
+  color: white;
+}
+
+.btn-confetti:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+}
+
+/* Confetes */
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+footer {
+  margin-top: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}

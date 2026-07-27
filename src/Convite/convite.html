@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de 1 Aninho - Benjamin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Convite/css/style.css">
+</head>
+
+<body>
+
+    <!-- Fundo Animado com Nuvens Deslizantes e Estrelas --> 
+    <div class="cloud-bg-container">
+        <div class="animated-cloud cloud-1"></div>
+        <div class="animated-cloud cloud-2"></div>
+        <div class="animated-cloud cloud-3"></div>
+
+        <!-- Estrelas Brilhantes -->
+        <div class="sparkle-star" style="top: 15%; left: 10%;">✦</div>
+        <div class="sparkle-star" style="top: 25%; right: 12%; animation-delay: 1s;">✦</div>
+        <div class="sparkle-star" style="top: 65%; left: 8%; animation-delay: 2s;">✦</div>
+        <div class="sparkle-star" style="top: 80%; right: 15%; animation-delay: 0.5s;">✦</div>
+    </div>
+
+    <!-- Card do Convite -->
+    <div class="card">
+        <div class="header-badge">✨ Você está convidado! ✨</div>
+
+        <div class="bible-verse">
+            "Por este filho nós orávamos e o Senhor ouviu nossa oração."
+            <span>— 1 Samuel 1:27</span>
+        </div>
+
+        <div class="name-container">
+            <h1 class="name">Benjamin</h1>
+            <div class="age-tag">🎈 Meu 1º Aninho</div>
+        </div>
+
+        <div class="illustration-box">
+            <svg class="illustration-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 65 C15 65 10 60 10 52 C10 45 15 40 22 40 C25 30 35 22 48 22 C60 22 70 30 73 40 C80 40 85 45 85 52 C85 60 80 65 75 65 Z"
+                    fill="#93C5FD" opacity="0.4" />
+                <path
+                    d="M25 70 C20 70 15 65 15 58 C15 52 20 47 26 47 C29 38 38 30 50 30 C61 30 70 38 73 47 C79 47 84 52 84 58 C84 65 79 70 74 70 Z"
+                    fill="#ffffff" />
+                <circle cx="42" cy="52" r="2.5" fill="#1B4980" />
+                <circle cx="58" cy="52" r="2.5" fill="#1B4980" />
+                <path d="M47 57 Q50 60 53 57" stroke="#1B4980" stroke-width="2" stroke-linecap="round" fill="none" />
+                <circle cx="38" cy="55" r="3" fill="#FCA5A5" opacity="0.6" />
+                <circle cx="62" cy="55" r="3" fill="#FCA5A5" opacity="0.6" />
+                <polygon points="75,25 78,32 85,33 80,38 81,45 75,41 69,45 70,38 65,33 72,32" fill="#FBBF24" />
+            </svg>
+            <h2 class="theme-title">Jesus, meu melhor amigo</h2>
+            <p class="subtitle">Venha celebrar este dia tão especial e abençoado conosco!</p>
+        </div>
+
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">📅</div>
+                <div class="detail-text">
+                    <h4>Data</h4>
+                    <p>30 de Agosto de 2026</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">⏰</div>
+                <div class="detail-text">
+                    <h4>Horário</h4>
+                    <p>13:00 Horas</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">📍</div>
+                <div class="detail-text">
+                    <h4>Local</h4>
+                    <p>Salão Dream Space</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contagem Regressiva -->
+        <div class="countdown-title">⏳ Faltam para a festa:</div>
+        <div class="timer-grid">
+            <div class="timer-block">
+                <span class="timer-number" id="days">00</span>
+                <span class="timer-label">Dias</span>
+            </div>
+            <div class="timer-block">
+                <span class="timer-number" id="hours">00</span>
+                <span class="timer-label">Horas</span>
+            </div>
+            <div class="timer-block">
+                <span class="timer-number" id="minutes">00</span>
+                <span class="timer-label">Min</span>
+            </div>
+            <div class="timer-block">
+                <span class="timer-number" id="seconds">00</span>
+                <span class="timer-label">Seg</span>
+            </div>
+        </div>
+
+        <!-- Abas Expansíveis para Detalhes Adicionais -->
+        <div class="expandable-section">
+            <button class="expand-header" onclick="toggleExpand('gifts')">
+                <span>🎁 Sugestão de Presente / Tamanho</span>
+                <span id="gifts-arrow">▼</span>
+            </button>
+            <div id="gifts" class="expand-content">
+                Sua presença é o nosso melhor presente! Mas caso deseje presentear o Benjamin:<br><br>
+                • <strong>Roupinha:</strong> Tamanho 1 ano / 12-18 meses<br>
+                • <strong>Calçado:</strong> Número 20 / 21<br>
+                • <strong>Brinquedos:</strong> Educativos / Lúdicos
+            </div>
+        </div>
+
+        <div class="expandable-section">
+            <button class="expand-header" onclick="toggleExpand('info')">
+                <span>ℹ️ Informações Importantes</span>
+                <span id="info-arrow">▼</span>
+            </button>
+            <div id="info" class="expand-content">
+                • Favor confirmar a presença até o dia 10/08 para organizarmos tudo com muito carinho!<br><br>
+                <b>Importante: Sua presença é muito importante para nós! Como o espaço é limitado, pedimos a gentileza de não trazer acompanhantes ou convidados extras. Agradecemos a compreensão e esperamos você para celebrar esse momento especial! 🎉</b><br>
+                <!-- • Estacionamento disponível no local. -->
+            </div>
+        </div>
+
+        <!-- Botões de Ação -->
+        <div class="action-buttons">
+            <a href="https://api.whatsapp.com/send?phone=5534988095043&text=Ol%C3%A1!%20Confirmado!%20Com%20muita%20Alegria%20vamos%20ao%20Anivers%C3%A1rio%20de%201%20Ano%20do%20Benjamin!%20%F0%9F%8E%88%E2%9C%A8"
+                target="_blank" class="btn btn-whatsapp">
+                <span>💬 Confirmar Presença (WhatsApp)</span>
+            </a>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Sal%C3%A3o+Dream+Space" target="_blank"
+                class="btn btn-location">
+                <span>🗺️ Ver Localização no Mapa</span>
+            </a>
+
+            <button onclick="throwConfetti()" class="btn btn-confetti">
+                <span>🎉 Comemorar com Confetes!</span>
+            </button>
+        </div>
+
+        <footer>
+            <p>Esperamos por você para celebrar a vida do Benjamin!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Lógica da Contagem Regressiva
+        const eventDate = new Date("August 30, 2026 13:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Lógica dos Menus Expansíveis
+        function toggleExpand(id) {
+            const content = document.getElementById(id);
+            const arrow = document.getElementById(id + '-arrow');
+
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                arrow.innerText = '▼';
+            } else {
+                // Fecha outros
+                document.querySelectorAll('.expand-content').forEach(el => el.classList.remove('open'));
+                document.querySelectorAll('.expand-header span:last-child').forEach(el => el.innerText = '▼');
+
+                content.classList.add('open');
+                arrow.innerText = '▲';
+            }
+        }
+
+        // Efeito de Confetes
+        function throwConfetti() {
+            const colors = ['#1B4980', '#4A90E2', '#93C5FD', '#FBBF24', '#F59E0B', '#ffffff'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                confetti.style.width = (Math.random() * 8 + 6) + 'px';
+                confetti.style.height = confetti.style.width;
+                document.body.appendChild(confetti);
+
+                setTimeout(() => { confetti.remove(); }, 3500);
+            }
+        }
+    </script>
+</body>
+
+</html>
