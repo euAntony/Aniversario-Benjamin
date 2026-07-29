@@ -97,20 +97,24 @@ async function handleRSVPSubmit(event) {
     const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbyr0Pf9imxc-8yP5W1PmKPMwxul9EhYEu01hH8wUOh4vWENUWenlZGlSxu8ZZttcCp6/exec";
     const SEU_WHATSAPP = "5534988095043";
 
-    // 2. Envia para o Google Sheets via FormData nativo
-    const formData = new FormData(event.target);
+    // 2. Envia os dados para o Google Sheets via parâmetros na URL (Infalível)
+    const params = new URLSearchParams({
+        nome: name,
+        adultos: adults,
+        criancas: kids,
+        observacao: obs
+    });
 
     try {
-        await fetch(GOOGLE_SHEETS_URL, {
+        await fetch(`${GOOGLE_SHEETS_URL}?${params.toString()}`, {
             method: 'POST',
-            mode: 'no-cors',
-            body: formData
+            mode: 'no-cors'
         });
     } catch (error) {
         console.log("Erro no envio para planilha:", error);
     }
 
-    // 3. Monta a mensagem para o WhatsApp (Sem caracteres especiais quebrados)
+    // 3. Monta a mensagem para o WhatsApp
     let message = `*Confirmação de Presença - Aniversário do Benjamin* 🎉\n\n`;
     message += `👤 *Nome:* ${name}\n`;
     message += `👨‍👩‍👧 *Adultos:* ${adults}\n`;
