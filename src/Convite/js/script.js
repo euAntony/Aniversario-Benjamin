@@ -64,6 +64,23 @@ function throwConfetti() {
     }
 }
 
+// ================= FUNÇÕES DO MODAL (REVERTIDAS E NECESSÁRIAS) =================
+function openModal() {
+    document.getElementById('rsvpModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('rsvpModal').classList.remove('active');
+}
+
+// Fecha o modal se o convidado clicar no fundo escuro
+window.onclick = function(event) {
+    const modal = document.getElementById('rsvpModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+
 // Tratamento de Envio da Confirmação (Planilha Google + WhatsApp)
 async function handleRSVPSubmit(event) {
     event.preventDefault();
