@@ -63,3 +63,64 @@ function throwConfetti() {
         }, 3500);
     }
 }
+
+// Tratamento de Envio da Confirmação (Planilha Google + WhatsApp)
+async function handleRSVPSubmit(event) {
+    event.preventDefault();
+    const btnSubmit = document.getElementById('btnSubmitRSVP');
+    btnSubmit.disabled = true;
+    btnSubmit.innerHTML = "<span>Enviando...</span>";
+
+    // 1. Coleta os valores digitados no formulário pelos IDs exatos do seu HTML
+    const name = document.getElementById('guestName').value;
+    const adults = document.getElementById('adultsCount').value;
+    const kids = document.getElementById('kidsCount').value;
+    const obs = document.getElementById('obs').value;
+
+    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycby3moFhk3SYjbhnNzfZJpToV6ZKoR7NoND-l1VsjOzYZ_ZUzKYJv1jE1fDB3Kxe4VRF/exec";
+    const SEU_WHATSAPP = "5534988095043";
+
+    // 2. Prepara os dados no formato exato que o Google Apps Script lê
+    const payload = new URLSearchParams();
+    payload.append('nome', name);
+    payload.append('adultos', adults);
+    payload.append('criancas', kids);
+    payload.append('observacao', obs);
+
+    try {
+        // Envia para o Google Sheets em segundo plano
+        fetch(GOOGLE_SHEETS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: payload.toString()
+        });
+    } catch (error) {
+        console.log("Erro no envio para planilha:", error);
+    }
+
+    // 3. Monta a mensagem para o WhatsApp
+    let message = `*Confirmação de Presença - Aniversário do Benjamin* 🎉\n\n`;
+    message += `👤 *Nome:* ${name}\n`;
+    message += `👨‍👩‍👧 *Adultos:* ${adults}\n`;
+    message += `👶 *Crianças:* ${kids}\n`;
+    if (obs && obs.trim() !== '') {
+        message += `📝 *Obs:* ${obs}\n`;
+    }
+    message += `\nEstamos muito felizes em comemorar com vocês! ✨`;
+
+    // 4. Animação de confetes, limpa o formulário e fecha o modal
+    throwConfetti();
+    closeModal();
+    event.target.reset();
+
+    // Reset do botão
+    btnSubmit.disabled = false;
+    btnSubmit.innerHTML = "<span>Confirmar e Enviar 🎉</span>";
+
+    // 5. Abre o WhatsApp com a mensagem pronta
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${SEU_WHATSAPP}&text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}

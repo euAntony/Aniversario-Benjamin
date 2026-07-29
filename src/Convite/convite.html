@@ -6,9 +6,7 @@
     <title>Convite de 1 Aninho - Benjamin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Convite/css/style.css">
 </head>
 
@@ -27,7 +25,7 @@
         <div class="sparkle-star" style="top: 80%; right: 15%; animation-delay: 0.5s;">✦</div>
     </div>
 
-    <!-- Card do Convite -->
+    <!-- Card Principal do Convite -->
     <div class="card">
         <div class="header-badge">✨ Você está convidado! ✨</div>
 
@@ -43,12 +41,8 @@
 
         <div class="illustration-box">
             <svg class="illustration-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M20 65 C15 65 10 60 10 52 C10 45 15 40 22 40 C25 30 35 22 48 22 C60 22 70 30 73 40 C80 40 85 45 85 52 C85 60 80 65 75 65 Z"
-                    fill="#93C5FD" opacity="0.4" />
-                <path
-                    d="M25 70 C20 70 15 65 15 58 C15 52 20 47 26 47 C29 38 38 30 50 30 C61 30 70 38 73 47 C79 47 84 52 84 58 C84 65 79 70 74 70 Z"
-                    fill="#ffffff" />
+                <path d="M20 65 C15 65 10 60 10 52 C10 45 15 40 22 40 C25 30 35 22 48 22 C60 22 70 30 73 40 C80 40 85 45 85 52 C85 60 80 65 75 65 Z" fill="#93C5FD" opacity="0.4" />
+                <path d="M25 70 C20 70 15 65 15 58 C15 52 20 47 26 47 C29 38 38 30 50 30 C61 30 70 38 73 47 C79 47 84 52 84 58 C84 65 79 70 74 70 Z" fill="#ffffff" />
                 <circle cx="42" cy="52" r="2.5" fill="#1B4980" />
                 <circle cx="58" cy="52" r="2.5" fill="#1B4980" />
                 <path d="M47 57 Q50 60 53 57" stroke="#1B4980" stroke-width="2" stroke-linecap="round" fill="none" />
@@ -107,7 +101,7 @@
             </div>
         </div>
 
-        <!-- Abas Expansíveis para Detalhes Adicionais -->
+        <!-- Abas Expansíveis -->
         <div class="expandable-section">
             <button class="expand-header" onclick="toggleExpand('gifts')">
                 <span>🎁 Sugestão de Presente / Tamanho</span>
@@ -127,21 +121,25 @@
                 <span id="info-arrow">▼</span>
             </button>
             <div id="info" class="expand-content">
-                • Favor confirmar a presença até o dia 10/08 para organizarmos tudo com muito carinho!<br><br>
-                <b>Importante: Sua presença é muito importante para nós! Como o espaço é limitado, pedimos a gentileza de não trazer acompanhantes ou convidados extras. Agradecemos a compreensão e esperamos você para celebrar esse momento especial! 🎉</b><br>
-                <!-- • Estacionamento disponível no local. -->
+                • Favor confirmar a presença até o dia 10/08 para organizarmos tudo com muito carinho!<br>
+                • Como o espaço é limitado, pedimos a gentileza de não trazer acompanhantes ou convidados extras.<br>
+                • Proibido o uso de bebidas alcoólicas no local. <br><br>
+                
+                Agradecemos a compreensão e esperamos você para celebrar esse momento especial! 🎉</b>
             </div>
         </div>
 
         <!-- Botões de Ação -->
         <div class="action-buttons">
-            <a href="https://api.whatsapp.com/send?phone=5534988095043&text=Ol%C3%A1!%20Confirmado!%20Com%20muita%20Alegria%20vamos%20ao%20Anivers%C3%A1rio%20de%201%20Ano%20do%20Benjamin!%20%F0%9F%8E%88%E2%9C%A8"
-                target="_blank" class="btn btn-whatsapp">
-                <span>💬 Confirmar Presença (WhatsApp)</span>
+            <button onclick="openModal()" class="btn btn-rsvp">
+                <span>✨ Confirmar Presença</span>
+            </button>
+
+            <a href="https://api.whatsapp.com/send?phone=5534988095043" target="_blank" class="btn btn-whatsapp">
+                <span>💬 Dúvidas / WhatsApp</span>
             </a>
 
-            <a href="https://www.google.com/maps/search/?api=1&query=Sal%C3%A3o+Dream+Space" target="_blank"
-                class="btn btn-location">
+            <a href="https://www.google.com/maps/search/?api=1&query=Sal%C3%A3o+Dream+Space" target="_blank" class="btn btn-location">
                 <span>🗺️ Ver Localização no Mapa</span>
             </a>
 
@@ -155,7 +153,46 @@
         </footer>
     </div>
 
+    <!-- Modal de Confirmação -->
+    <div id="rsvpModal" class="modal-overlay">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <div class="modal-header">
+                <h3>✨ Confirmar Presença</h3>
+                <p>Ficamos muito felizes em celebrar este dia com você!</p>
+            </div>
+
+            <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)">
+                <div class="form-group">
+                    <label for="guestName">Nome Completo do Convidado / Família:</label>
+                    <input type="text" id="guestName" name="nome" required placeholder="Ex: Família Silva ou João">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="adultsCount">Adultos:</label>
+                        <input type="number" id="adultsCount" name="adultos" min="1" value="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kidsCount">Crianças (2-10 anos):</label>
+                        <input type="number" id="kidsCount" name="criancas" min="0" value="0" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="obs">Mensagem ou Observação:</label>
+                    <textarea id="obs" name="observacao" rows="2" placeholder="Ex: Bebê de colo / Alguma restrição alimentar"></textarea>
+                </div>
+
+                <button type="submit" id="btnSubmitRSVP" class="btn btn-submit">
+                    <span>Confirmar e Enviar 🎉</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script src="../Convite/js/script.js"></script>
 </body>
-
 </html>
