@@ -88,37 +88,29 @@ async function handleRSVPSubmit(event) {
     btnSubmit.disabled = true;
     btnSubmit.innerHTML = "<span>Enviando...</span>";
 
-    // 1. Coleta os valores digitados no formulário pelos IDs exatos do seu HTML
+    // 1. Coleta os valores digitados no formulário
     const name = document.getElementById('guestName').value;
     const adults = document.getElementById('adultsCount').value;
     const kids = document.getElementById('kidsCount').value;
     const obs = document.getElementById('obs').value;
 
-    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycby3moFhk3SYjbhnNzfZJpToV6ZKoR7NoND-l1VsjOzYZ_ZUzKYJv1jE1fDB3Kxe4VRF/exec";
+    const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbyr0Pf9imxc-8yP5W1PmKPMwxul9EhYEu01hH8wUOh4vWENUWenlZGlSxu8ZZttcCp6/exec";
     const SEU_WHATSAPP = "5534988095043";
 
-    // 2. Prepara os dados no formato exato que o Google Apps Script lê
-    const payload = new URLSearchParams();
-    payload.append('nome', name);
-    payload.append('adultos', adults);
-    payload.append('criancas', kids);
-    payload.append('observacao', obs);
+    // 2. Envia para o Google Sheets via FormData nativo
+    const formData = new FormData(event.target);
 
     try {
-        // Envia para o Google Sheets em segundo plano
-        fetch(GOOGLE_SHEETS_URL, {
+        await fetch(GOOGLE_SHEETS_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: payload.toString()
+            body: formData
         });
     } catch (error) {
         console.log("Erro no envio para planilha:", error);
     }
 
-    // 3. Monta a mensagem para o WhatsApp
+    // 3. Monta a mensagem para o WhatsApp (Sem caracteres especiais quebrados)
     let message = `*Confirmação de Presença - Aniversário do Benjamin* 🎉\n\n`;
     message += `👤 *Nome:* ${name}\n`;
     message += `👨‍👩‍👧 *Adultos:* ${adults}\n`;
