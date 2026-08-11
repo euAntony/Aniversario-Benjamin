@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convite de 1 Aninho - Benjamin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../Convite/css/style.css">
     <link rel="icon" href="../img/logo.png">
 </head>
 
 <body>
 
-    <!-- Fundo Animado com Nuvens Deslizantes e Estrelas --> 
+    <!-- Fundo Animado com Nuvens Deslizantes e Estrelas -->
     <div class="cloud-bg-container">
         <div class="animated-cloud cloud-1"></div>
         <div class="animated-cloud cloud-2"></div>
@@ -42,8 +45,12 @@
 
         <div class="illustration-box">
             <svg class="illustration-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 65 C15 65 10 60 10 52 C10 45 15 40 22 40 C25 30 35 22 48 22 C60 22 70 30 73 40 C80 40 85 45 85 52 C85 60 80 65 75 65 Z" fill="#93C5FD" opacity="0.4" />
-                <path d="M25 70 C20 70 15 65 15 58 C15 52 20 47 26 47 C29 38 38 30 50 30 C61 30 70 38 73 47 C79 47 84 52 84 58 C84 65 79 70 74 70 Z" fill="#ffffff" />
+                <path
+                    d="M20 65 C15 65 10 60 10 52 C10 45 15 40 22 40 C25 30 35 22 48 22 C60 22 70 30 73 40 C80 40 85 45 85 52 C85 60 80 65 75 65 Z"
+                    fill="#93C5FD" opacity="0.4" />
+                <path
+                    d="M25 70 C20 70 15 65 15 58 C15 52 20 47 26 47 C29 38 38 30 50 30 C61 30 70 38 73 47 C79 47 84 52 84 58 C84 65 79 70 74 70 Z"
+                    fill="#ffffff" />
                 <circle cx="42" cy="52" r="2.5" fill="#1B4980" />
                 <circle cx="58" cy="52" r="2.5" fill="#1B4980" />
                 <path d="M47 57 Q50 60 53 57" stroke="#1B4980" stroke-width="2" stroke-linecap="round" fill="none" />
@@ -69,14 +76,6 @@
                 <div class="detail-text">
                     <h4>Horário</h4>
                     <p>13:00 Horas</p>
-                </div>
-            </div>
-
-            <div class="detail-card">
-                <div class="detail-icon">📍</div>
-                <div class="detail-text">
-                    <h4>Local</h4>
-                    <p>Salão Dream Space</p>
                 </div>
             </div>
         </div>
@@ -125,7 +124,7 @@
                 • Favor confirmar a presença até o dia 10/08 para organizarmos tudo com muito carinho!<br>
                 • Como o espaço é limitado, pedimos a gentileza de não trazer acompanhantes ou convidados extras.<br>
                 • Proibido o uso de bebidas alcoólicas no local. <br><br>
-                
+
                 Agradecemos a compreensão e esperamos você para celebrar esse momento especial! 🎉</b>
             </div>
         </div>
@@ -135,14 +134,6 @@
             <button onclick="openModal()" class="btn btn-rsvp">
                 <span>✨ Confirmar Presença</span>
             </button>
-
-            <a href="https://api.whatsapp.com/send?phone=5534988095043" target="_blank" class="btn btn-whatsapp">
-                <span>💬 Dúvidas / WhatsApp</span>
-            </a>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Sal%C3%A3o+Dream+Space" target="_blank" class="btn btn-location">
-                <span>🗺️ Ver Localização no Mapa</span>
-            </a>
 
             <button onclick="throwConfetti()" class="btn btn-confetti">
                 <span>🎉 Comemorar com Confetes!</span>
@@ -154,46 +145,25 @@
         </footer>
     </div>
 
-    <!-- Modal de Confirmação -->
-    <div id="rsvpModal" class="modal-overlay">
-        <div class="modal-content">
-            <button type="button" class="modal-close" onclick="closeModal()">&times;</button>
-            
-            <div class="modal-header">
-                <h3>✨ Confirmar Presença</h3>
-                <p>Ficamos muito felizes em celebrar este dia com você!</p>
-            </div>
-
-            <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)">
-                <div class="form-group">
-                    <label for="guestName">Nome Completo do Convidado / Família:</label>
-                    <input type="text" id="guestName" name="nome" required placeholder="Ex: Família Silva ou João">
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="adultsCount">Adultos:</label>
-                        <input type="number" id="adultsCount" name="adultos" min="1" value="1" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="kidsCount">Crianças (2-10 anos):</label>
-                        <input type="number" id="kidsCount" name="criancas" min="0" value="0" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="obs">Mensagem ou Observação:</label>
-                    <textarea id="obs" name="observacao" rows="2" placeholder="Ex: Bebê de colo / Alguma restrição alimentar"></textarea>
-                </div>
-
-                <button type="submit" id="btnSubmitRSVP" class="btn btn-submit">
-                    <span>Confirmar e Enviar 🎉</span>
-                </button>
-            </form>
+    <!-- Modal de Prazo Encerrado -->
+    <div id="rsvpModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="closeModal()" style="cursor: pointer;">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="margin-bottom: 15px; color: #1B4980;">Prazo Encerrado ⏳</h2>
+            <p style="font-size: 1rem; line-height: 1.6; color: #333; margin-bottom: 15px;">
+                O prazo para confirmação de presença no aniversário do Benjamin já se encerrou e a lista final foi
+                enviada ao evento.
+            </p>
+            <p style="font-size: 0.95rem; color: #1B4980; font-weight: bold; margin-bottom: 0;">
+                Agradecemos muito o carinho de todos! 
+            </p>
+            <span style="display: block; margin-top: 20px; font-size: 0.8rem; color: #888;">
+                (Clique em qualquer lugar para fechar)
+            </span>
         </div>
     </div>
 
     <script src="../Convite/js/script.js"></script>
 </body>
+
 </html>

@@ -64,16 +64,20 @@ function throwConfetti() {
     }
 }
 
-// ================= FUNÇÕES DO MODAL (REVERTIDAS E NECESSÁRIAS) =================
+// Abre o modal com a mensagem de prazo encerrado
+// Abre o aviso ao clicar no botão "Confirmar Presença"
 function openModal() {
-    document.getElementById('rsvpModal').classList.add('active');
+    const modal = document.getElementById('rsvpModal');
+    modal.classList.add('active');
 }
 
+// Fecha o aviso ao clicar em qualquer lugar da tela
 function closeModal() {
-    document.getElementById('rsvpModal').classList.remove('active');
+    const modal = document.getElementById('rsvpModal');
+    modal.classList.remove('active');
 }
 
-// Fecha o modal se o convidado clicar no fundo escuro
+// Garante o fechamento no clique fora do card
 window.onclick = function(event) {
     const modal = document.getElementById('rsvpModal');
     if (event.target === modal) {
